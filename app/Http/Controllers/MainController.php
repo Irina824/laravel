@@ -13,7 +13,7 @@ class MainController extends Controller
             $count = $trustCount = Session::get('count');
             $count++;
         } else {
-            $count = 1;
+            $count = $trustCount = 1;
         }
         Session::put('count', $count);
         Session::put('trustCount', $trustCount);
