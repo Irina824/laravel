@@ -1,17 +1,23 @@
+@if($error != '')
+    <div>
+        <ul>
+           <li> <span style="color:#db1689"> {{ $error }} </span></li>
+        </ul>
+    </div>
+@endif
 <form method="post" action="/input">
     @csrf
     <div id="myEkstr">
         <hr>
         <span style="color:#008080"> Экстрасенсы считают,что вы загадали указанные числа: </span>
         <table border="0">
-            <tr>
-                <td>Первый</td>
-                <td>Второй</td>
-            </tr>
-            <tr align="center">
-                <td> <input type="text" name="setEkstr1" id="setEkstr1" size="5" readonly value="<? echo Session::get('ekstr1') ?>"> </td>
-                <td> <input type="text" name="setEkstr2" id="setEkstr2" size="5" readonly value="<? echo Session::get('ekstr2') ?>"> </td>
-            </tr>
+
+            <?php for ($i = 1; $i < Session::get('countExtrasens')+1; $i++) { ?>
+                <tr align="center">
+                    <td>Экстрасенс {{ $i }} : <?= Session::get('extr'.$i) ?> </td>
+                </tr>
+            <? } ?>
+
         </table>
 
         <br>
@@ -24,11 +30,10 @@
 
 <script src="https://unpkg.com/imask"> </script>
 <script>
-    var element = document.getElementById('setNumber');
-    var maskOptions = {
+    let element = document.getElementById('setNumber');
+    let maskOptions = {
         mask: '00',
         lazy: false
     }
-    var mask = new IMask(element, maskOptions);
-
+    let mask = new IMask(element, maskOptions);
 </script>

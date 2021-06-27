@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\MainController@main');
 
-Route::post('/think', 'App\Http\Controllers\MainController@think');
+Route::post('/think', 'App\Http\Controllers\ThinkController@main');
 
-Route::post('/input', 'App\Http\Controllers\MainController@input');
+Route::post('/input', 'App\Http\Controllers\InputController@main');

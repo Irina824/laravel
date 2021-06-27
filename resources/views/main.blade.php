@@ -19,35 +19,34 @@
         <hr>
         <span style="color:#008080"> История догадок экстрасенсов: </span>
         <table border="0">
-            <tr>
-                <td>Первый:</td>
-                <td><? echo Session::get('ekstr1_all') ?></td>
-            </tr>
-            <tr>
-                <td>Второй:</td>
-                <td><? echo Session::get('ekstr2_all') ?></td>
-            </tr>
+
+            <?php for ($i = 1; $i < Session::get('countExtrasens')+1; $i++) { ?>
+                <tr>
+                    <td> <span style="color:#db1689"> Экстрасенс {{$i}}: </span> <?= Session::get('extrAll'.$i) ?> </td>
+                </tr>
+            <? } ?>
+
         </table>
         <br>
         <span style="color:#008080"> История чисел пользователя: </span>
         <table border="0">
             <tr>
-                <td>Пользователь:</td>
-                <td><? echo Session::get('user_all') ?></td>
+                <td> <span style="color:#db1689"> Пользователь: </span> </td>
+                <td>{{ $userAll }}</td>
             </tr>
         </table>
 
         <br>
         <span style="color:#008080"> Достоверность (кол-во правильных ответов / к общему числу догадок): </span>
         <table border="0">
-            <tr>
-                <td>Экстрасенс 1:</td>
-                <td><? echo Session::get('trust1')/Session::get('trustCount') ?></td>
-            </tr>
-            <tr>
-                <td>Экстрасенс 2:</td>
-                <td><? echo Session::get('trust2')/Session::get('trustCount') ?></td>
-            </tr>
+
+            <?php for ($i = 1; $i < Session::get('countExtrasens')+1; $i++) { ?>
+                <tr>
+                    <td> <span style="color:#db1689"> Экстрасенс <?= $i ?> : </span> </td>
+                    <td><?= Session::get('trustTrue'.$i) ?></td>
+                </tr>
+            <? } ?>
+
         </table>
     </div>
 </form>
